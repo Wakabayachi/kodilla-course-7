@@ -1,0 +1,30 @@
+SELECT
+    I.issue_id,
+    I.issue_name,
+    L.list_name
+FROM
+    ISSUESS I
+JOIN
+    ISSUESLISTS L ON I.list_id = L.list_id;
+
+SELECT
+    I.issue_id,
+    I.issue_name,
+    U.first_name,
+    U.last_name
+FROM
+    ISSUESS I
+JOIN
+    USERS U ON I.user_id = U.user_id;
+
+SELECT
+    U.first_name,
+    U.last_name,
+    COUNT(I.issue_id) AS task_count
+FROM
+    USERS U
+JOIN
+    ISSUESS I ON U.user_id = I.user_id
+GROUP BY
+    U.first_name,
+    U.last_name;
